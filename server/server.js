@@ -6,6 +6,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+// Import internal library's
+const path = require('path');
+
 // Declare express in app
 const app = express();
 
@@ -14,6 +17,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
+// Enable public folder content
+app.use(express.static(path.resolve(__dirname, '../public')));
+
 // Use all routes
 app.use(require('./routes/index.js'));
 
@@ -21,7 +27,7 @@ app.use(require('./routes/index.js'));
 // DB Conection
 mongoose.set('useNewUrlParser', true);
 
-mongoose.connect( `${process.env.DBURL}`,{useUnifiedTopology: true,useCreateIndex: true},(err) => {
+mongoose.connect( process.env.DBURL,{useUnifiedTopology: true,useCreateIndex: true},(err) => {
     if ( err ) throw err;
     console.log('Se ha conectado a MONGODB')
 });
