@@ -1,6 +1,9 @@
 const fs = require('fs');
 
-const client_id = fs.readFileSync(__dirname+'/clientid.key',{encoding:'utf8', flag:'r'});
+let client_id = "";
+if (fs.existsSync(__dirname+'/clientid.key')){
+    client_id = fs.readFileSync(__dirname+'/clientid.key',{encoding:'utf8', flag:'r'});
+}
 
 process.env.PORT = process.env.PORT || 3000;
 
