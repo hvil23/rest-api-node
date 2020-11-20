@@ -11,7 +11,8 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 process.env.DB = process.env.DB || 'cafe';
 
-process.env.EXPIRED_TOKEN = 60*60*24*30;
+//process.env.EXPIRED_TOKEN = 60*60*24*30;
+process.env.EXPIRED_TOKEN = '48h';
 
 process.env.SEED_TOKEN = process.env.SEED_TOKEN || 'seed-develop';
 
